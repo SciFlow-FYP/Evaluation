@@ -1,0 +1,129 @@
+import pandas as pd
+import numpy as np
+from datetime import datetime
+
+import os,sys,inspect
+currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
+parentdir = os.path.dirname(currentdir)
+sys.path.insert(0,parentdir)
+import userScript
+#ignore warnings printed on terminal
+pd.options.mode.chained_assignment = None  # default='warn'
+
+
+currentModule = "combineColumns"
+workflowNumber = sys.argv[1]
+
+if workflowNumber == "1":
+	orderOfModules = userScript.orderOfModules1
+	inputDataset = userScript.inputDataset1
+	outputLocation = userScript.outputLocation1
+elif workflowNumber == "2":
+	orderOfModules = userScript.orderOfModules2
+	inputDataset = userScript.inputDataset2
+	outputLocation = userScript.outputLocation2
+
+
+df = pd.DataFrame()
+for i in range(len(orderOfModules)):
+	#print(orderOfModules[i])
+	if currentModule == orderOfModules[i]:
+		if i == 0:
+			df = pd.read_csv(inputDataset)
+			break
+		else:
+			previousModule = orderOfModules[i-1]
+			df = pd.read_csv(outputLocation + previousModule + ".csv")
+			break
+
+outputDataset = outputLocation + currentModule + ".csv"
+columnsToAggregate = [["Actor1Geo_CountryCode", "Actor2Geo_CountryCode", "ActorGeo_CountryCode" ]]
+
+def combineColumns(startRowIndex, endRowIndex, dFrame, columnsToAggregate):
+	import pandas as pd
+	import numpy as np
+	df = pd.DataFrame()
+	df = dFrame.iloc[np.r_[startRowIndex : endRowIndex] , : ]
+
+	columnList = list(df.columns.values)
+
+	for i in columnsToAggregate:
+		column1 = i[0]
+		#print(i[0])
+		#column1index = df.columns.get_loc(column1)
+		column2 = i[1]
+		#column2index = df.columns.get_loc(column2)
+		newColumn = i[2]
+		newColumnList = []
+
+		newColumnList = columnList
+		newColumnList.remove(column1)
+		newColumnList.remove(column2)
+		newColumnList.append(newColumn)
+
+		#print(newColumnList)
+
+
+		dfNew = pd.DataFrame(columns = newColumnList)
+		#print(dfNew)
+
+		for index,row in df.iterrows():
+
+			if row[column1] == row[column2]:
+				x = row[column1]
+				row = row.drop(labels=[column1,column2])
+				#print(row)
+				rowAdd = pd.Series([x], index=[newColumn])
+				row = row.append(rowAdd)
+				dfNew = dfNew.append(row, ignore_index=True)
+
+			elif not row.notnull()[column1] and not row.notnull()[column2]:
+				#print("2")
+				#print("both null")
+                		s = 0
+
+			elif row.notnull()[column1] and not row.notnull()[column2]:
+				#print("3")
+				x = row[column1]
+				row = row.drop(labels=[column1,column2])
+				#print(row)
+				rowAdd = pd.Series([x], index=[newColumn])
+				row = row.append(rowAdd)
+				dfNew = dfNew.append(row, ignore_index=True)
+
+			elif row.notnull()[column2] and not row.notnull()[column1]:
+				#print("4")
+				x = row[column2]
+				row = row.drop(labels=[column1,column2])
+				#print(row)
+				rowAdd = pd.Series([x], index=[newColumn])
+				row = row.append(rowAdd)
+				dfNew = dfNew.append(row, ignore_index=True)
+			else:
+				x = row[column1]
+				y = row[column2]
+
+				row = row.drop(labels=[column1,column2])
+				#print(row)
+				rowAdd1 = pd.Series([x], index=[newColumn])
+				rowAdd2 = pd.Series([y], index=[newColumn])
+				row1 = row.append(rowAdd1)
+				dfNew = dfNew.append(row1, ignore_index=True)
+				row2 = row.append(rowAdd2)
+				dfNew = dfNew.append(row2, ignore_index=True)
+				#print(row)
+
+
+
+		#print(dfNew)
+		return dfNew
+		#dfNew.to_csv ("/home/amanda/FYP/testcsv/RFout1.csv", index = False, header=True)
+
+
+numOfRows = df.shape[0]
+dfNew = combineColumns(0, numOfRows, df, columnsToAggregate)
+dfNew = dfNew.loc[(dfNew['ActorGeo_CountryCode'] == "CE")]
+dfNew.to_csv (outputDataset, index = False, header=True)
+print("Module Completed: Combine multiple columns.")
+
+
