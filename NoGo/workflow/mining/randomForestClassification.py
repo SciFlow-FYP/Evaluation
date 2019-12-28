@@ -110,5 +110,4 @@ dfa.columns = ["Estimators","Depth","Split","MaxFeatures", "Accuracy"]
 
 dfa.to_csv (outputLocation + Iteration_no + '_rf.csv', index = None, header=True)
 
-# wait for all apps to complete
-#print("Job Status: {}".format([r.result() for r in results]))
+print("Module Completed: Random Forest iteration: " + Iteration_no)

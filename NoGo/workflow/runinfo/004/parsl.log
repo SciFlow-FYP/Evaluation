@@ -1,0 +1,28 @@
+2019-12-28 07:13:08.033 parsl.dataflow.dflow:83 [DEBUG]  Starting DataFlowKernel with config
+Config(
+    app_cache=True, 
+    checkpoint_files=None, 
+    checkpoint_mode=None, 
+    checkpoint_period=None, 
+    data_management_max_threads=10, 
+    executors=[ThreadPoolExecutor(
+        label='threads', 
+        managed=True, 
+        max_threads=2, 
+        storage_access=None, 
+        thread_name_prefix='', 
+        working_dir=None
+    )], 
+    initialize_logging=True, 
+    lazy_errors=True, 
+    max_idletime=120.0, 
+    monitoring=None, 
+    retries=0, 
+    run_dir='runinfo', 
+    strategy='simple', 
+    usage_tracking=False
+)
+2019-12-28 07:13:08.033 parsl.dataflow.dflow:84 [INFO]  Parsl version: 0.9.0
+2019-12-28 07:13:08.033 parsl.dataflow.usage_tracking.usage:126 [DEBUG]  Tracking status: False
+2019-12-28 07:13:08.033 parsl.dataflow.usage_tracking.usage:127 [DEBUG]  Testing mode   : False
+2019-12-28 07:13:08.033 parsl.dataflow.dflow:110 [INFO]  Run id is: ad9cca9a-c559-4ee6-9cc6-fbbd3d7892f3
