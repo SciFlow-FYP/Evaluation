@@ -83,7 +83,7 @@ def missingValuesMode(startColIndex, endColIndex, dFrame, colsMode):
 	ret  = df2
 	return ret
 
-maxThreads = 4
+maxThreads = userScript.maxThreads
 numOfCols = df.shape[1]
 #print(numOfCols)
 dfNew = pd.DataFrame()

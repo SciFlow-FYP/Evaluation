@@ -66,8 +66,7 @@ def dropUniqueColumns(startColIndex, endColIndex, dFrame, uniqueColList):
 
 	return uniqueColList
 
-
-maxThreads = 4
+maxThreads = userScript.maxThreads
 numOfCols = df.shape[1]
 results = []
 

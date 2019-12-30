@@ -64,6 +64,12 @@ def dropUniqueColumns(startColIndex, endColIndex, dFrame, uniqueColList):
 
 numOfCols = df.shape[1]
 dropUniqueColumns(0, numOfCols, df, uniqueColList)
+
+# wait for all apps to complete
+#[r.result() for r in results]
+
+#dropUniqueColumns(0,58,df,uniqueColList).result()
+#print(uniqueColList)
 df.drop(uniqueColList,inplace=True,axis=1)
 
 df.to_csv(outputDataset, index = False, header=True)

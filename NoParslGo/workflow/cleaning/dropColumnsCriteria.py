@@ -36,7 +36,6 @@ for i in range(len(orderOfModules)):
 outputDataset = outputLocation + currentModule + ".csv"
 dropList = []
 
-
 def dropColumnsCriteria(startColIndex, endColIndex, dFrame, maxPercentage, dropList):
 
 	import pandas as pd
@@ -70,7 +69,6 @@ def dropColumnsCriteria(startColIndex, endColIndex, dFrame, maxPercentage, dropL
 numOfCols = df.shape[1]
 dfNew = pd.DataFrame()
 dropColumnsCriteria(0, numOfCols, df, maxPercentageOfMissingValues, dropList)
-
 
 df.drop(dropList,inplace=True,axis=1)
 df.to_csv (outputDataset, index = False, header=True)

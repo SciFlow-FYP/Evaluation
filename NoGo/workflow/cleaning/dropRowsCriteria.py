@@ -56,7 +56,7 @@ def dropRowsCriteria(startRowIndex, endRowIndex, dFrame, maxPercentageOfMissingV
 numOfRows = df.shape[0]
 #print(numOfRows)
 dfNew = pd.DataFrame()
-maxThreads = 3
+maxThreads = userScript.maxThreads
 results = []
 
 #not parallel --> relatively small number of rows here

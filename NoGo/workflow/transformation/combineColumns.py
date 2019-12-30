@@ -125,7 +125,7 @@ def combineColumns(startRowIndex, endRowIndex, dFrame, columnsToAggregate):
 		return dfNew
 		#dfNew.to_csv ("/home/amanda/FYP/testcsv/RFout1.csv", index = False, header=True)
 
-maxThreads = 4
+maxThreads = userScript.maxThreads
 results = []
 numOfRows = df.shape[0]
 results = []

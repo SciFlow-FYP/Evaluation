@@ -89,7 +89,7 @@ def normalize(startColIndex, endColIndex, dFrame, normalizeCols):
 #drop the previous column and concat at the end.
 #parallelize the number of cols in the user script instruction - change for mode, normalize, encode
 
-maxThreads = 4
+maxThreads = userScript.maxThreads
 numOfCols = df.shape[1]
 #print(numOfCols)
 dfNew = pd.DataFrame()

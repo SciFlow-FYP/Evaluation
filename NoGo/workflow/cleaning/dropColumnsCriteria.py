@@ -77,7 +77,7 @@ lasThreadCols = 0
 
 dfNew = pd.DataFrame()
 
-maxThreads = 3
+maxThreads = userScript.maxThreads
 results = []
 
 if numOfCols <= maxThreads:

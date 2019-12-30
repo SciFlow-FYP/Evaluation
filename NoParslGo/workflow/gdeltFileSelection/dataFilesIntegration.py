@@ -3,6 +3,7 @@ import glob
 import pandas as pd
 from dataFileSelection import *
 import csv
+from pandas import DataFrame
 
 import sys,inspect
 currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
@@ -32,21 +33,37 @@ outputDataset = outputLocation + currentModule + ".csv"
 
 #create csv header
 with open(path + "CSV.header.dailyupdates.txt") as csvfile:
-    reader = csv.reader(csvfile, delimiter = "\t") # change contents to floats
-    header = list(reader)[0]
-    #print(header)
+	reader = csv.reader(csvfile, delimiter = "\t") # change contents to floats
+	header = list(reader)[0]
+	#print(header)
 
+listDf = []
 
+#convert all csv data files to df s and concatenate those 
+df = pd.DataFrame(columns = header)
+for filename in modifiedSelectedFiles:
+	df_temp = pd.read_csv(path+  "modifiedSelectedFiles/" +filename, index_col=False)
+	listDf.append(df_temp)	
+	df = pd.concat(listDf, ignore_index=True)
+
+#print(df)
+
+#convert final df to a csv
+df.to_csv(outputDataset, index = False, header=True)
+'''
 with open(outputDataset, "w", newline='', encoding='utf-8') as outcsv:
-    writer = csv.writer(outcsv, delimiter=',')
-    writer.writerow(header) # write the header
+	writer = csv.writer(outcsv, delimiter=',')
+	writer.writerow(header) # write the header
 
 
-    # write the actual content line by line
-    for filename in selectedFilesList:
-        with open(filename, 'r', newline='', encoding='utf-8') as incsv:
-            reader = csv.reader(incsv, delimiter="\t")
-            writer.writerows(row + [0.0] for row in reader)
+	# write the actual content line by line
+	for filename in modifiedSelectedFiles:
+		with open(path+  "modifiedSelectedFiles/" + filename, 'r', newline='', encoding='utf-8') as incsv:
+			print(filename)
+			reader2 = csv.reader(incsv, delimiter="\t")
+			next(reader2)
+			writer.writerows(row + [0.0] for row in reader2)
 
+'''
 
 print("Integrated Selected files module completed")

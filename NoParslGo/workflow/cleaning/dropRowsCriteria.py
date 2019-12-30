@@ -36,6 +36,8 @@ for i in range(len(orderOfModules)):
 
 outputDataset = outputLocation + currentModule + ".csv"
 
+
+
 def dropRowsCriteria(startRowIndex, endRowIndex, dFrame, maxPercentageOfMissingValues):
 
 	df = pd.DataFrame()
@@ -49,6 +51,10 @@ def dropRowsCriteria(startRowIndex, endRowIndex, dFrame, maxPercentageOfMissingV
 
 numOfRows = df.shape[0]
 #print(numOfRows)
-dfNew = dropRowsCriteria(0, numOfRows, df, maxPercentageOfMissingValues)
-dfNew.to_csv (outputDataset, index = False, header=True)
+df1 = dropRowsCriteria(0, numOfRows, df, maxPercentageOfMissingValues)
+
+
+df1.to_csv (outputDataset, index = False, header=True)
 print("Module Completed: Drop Rows based on User Defined Criteria")
+
+#dropRowsCriteria(0,9999, df, maxPercentageOfMissingValues).result()).to_csv(outputDataset, index = False, header=True)

@@ -56,6 +56,7 @@ orderOfModules2 = ["selectUserDefinedColumns","dropUniqueColumns",
 
 orderOfModules3 = ["dropUserDefinedColumns","kmeansModelTraining","knowledge_presentation","svm"]
 
+maxThreads = 4
 
 '''############################File locations#################################'''
 '''

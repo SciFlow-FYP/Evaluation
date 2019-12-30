@@ -1,4 +1,4 @@
-#from parsl import load, python_app
+from parsl import load, python_app
 
 import pandas as pd
 import numpy as np
@@ -16,7 +16,7 @@ parentdir = os.path.dirname(currentdir)
 sys.path.insert(0,parentdir)
 
 import userScript
-#import parslConfig
+import parslConfig
 #ignore warnings printed on terminal
 pd.options.mode.chained_assignment = None  # default='warn'
 
@@ -74,7 +74,7 @@ X = df.values.astype(np.float)
 
 X_train, X_test,y_train,y_test =  train_test_split(X,y,test_size=0.20,random_state=70)
 
-#@python_app
+@python_app
 def kmeans(n):
 	import pandas as pd
 	from sklearn.cluster import KMeans
@@ -110,10 +110,20 @@ for i in numberOfClusters:
 	app_future = kmeans(i)
 	results.append(app_future)
 
+# print each job status, initially all are running
+#print ("Job Status: {}".format([r.done() for r in results]))
 
-dfa=pd.DataFrame(results)
-dfa.columns = ["No_of_clusters", "Accuracy"]
+# wait for all apps to complete
+return_array = [r.result() for r in results]
+
+dfa=pd.DataFrame(return_array)
+dfa.columns = ["Clusters", "Accuracy"]
 #print(dfa)
 
 dfa.to_csv (outputLocation + Iteration_no + '_kmeans.csv', index = None, header=True)
 print("Kmeans with clusters 2,3,4,5,6,7 ran for " + Iteration_no + " time(s).\n")
+
+# print each job status, they will now be finished
+#print ("Job Status: {}".format(return_array))
+
+#print('Kmeans model traning completed')

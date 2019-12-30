@@ -52,7 +52,7 @@ def removeDuplicateRows(startRowIndex, endRowIndex, dFrame):
 numOfRows = df.shape[0]
 #print(numOfRows)
 dfNew = pd.DataFrame()
-maxThreads = 4
+maxThreads = userScript.maxThreads
 results = []
 
 #not parallel --> relatively small number of rows here
