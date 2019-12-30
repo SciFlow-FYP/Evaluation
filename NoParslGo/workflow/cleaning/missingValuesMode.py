@@ -1,7 +1,3 @@
-from parsl import load, python_app
-from parsl.configs.local_threads import config
-load(config)
-
 import pandas as pd
 import numpy as np
 import statistics
@@ -50,12 +46,12 @@ def missingValuesMode(startColIndex, endColIndex, dFrame, colsMode):
 	df = pd.DataFrame()
 	df = dFrame.iloc[: , np.r_[startColIndex : endColIndex]]
 	numOfRows = df.shape[0]
-
+	'''
 	#drop unique columns
 	for col in df.columns:
 		if len(df[col].unique()) == numOfRows:
 			df.drop(col,inplace=True,axis=1)
-
+	'''
 	if(colsMode == "all"):
 		#Mode of all columns
 		colNames = list(df)
@@ -83,7 +79,8 @@ def missingValuesMode(startColIndex, endColIndex, dFrame, colsMode):
 	return ret
 
 numOfCols = df.shape[1]
-dfNew = missingValuesMode(0, numOfCols, df, colsToMode)
+#print(numOfCols)
+dfNew =  missingValuesMode(0, numOfCols, df, colsToMode)
 #print(dfNew)
 dfNew.to_csv (outputDataset, index = False, header=True)
 print("Module Completed: Fill Missing Values with Mode")

@@ -1,3 +1,7 @@
+from parsl import load, python_app
+from parsl.configs.local_threads import config
+load(config)
+
 import pandas as pd
 import numpy as np
 import time
@@ -48,6 +52,7 @@ for i in range(len(orderOfModules)):
 
 outputLocation = outputLocation + "rf/"
 
+@python_app
 def rfClassifier(estimators, depth, split, features, dFrame):
 	dataset = dFrame
 	dataset.head()
@@ -80,25 +85,31 @@ def rfClassifier(estimators, depth, split, features, dFrame):
 	retArray = [estimators, depth, split,features, accuracyScore]
 	return retArray
 
+results = []
 #print(rfClassifier(100, 3, 2, 'auto', df).result())
 
-print(randomForestEstimatorRange)
-print(randomForestDepthRange)
-print(randomForestSplitRange)
-print(randomForestFeaturesRange)
+#print(randomForestEstimatorRange)
+#print(randomForestDepthRange)
+#print(randomForestSplitRange)
+#print(randomForestFeaturesRange)
 
-return_array = []
 for i in range(randomForestEstimatorRange[0], randomForestEstimatorRange[1]):
 	for j in range (randomForestDepthRange[0], randomForestDepthRange[1]):
 		for k in range(randomForestSplitRange[0],randomForestSplitRange[1]):
 			for l in range(randomForestFeaturesRange[0],randomForestFeaturesRange[1]):
 				x = rfClassifier(i,j,k,l,df)
-				return_array.append(x)
+				results.append(x)
 
 
+# wait for all apps to complete
+return_array = [r.result() for r in results]
 
 dfa=pd.DataFrame(return_array)
 dfa.columns = ["Estimators","Depth","Split","MaxFeatures", "Accuracy"]
 #print(dfa)
+
 dfa.to_csv (outputLocation + Iteration_no + '_rf.csv', index = None, header=True)
-print("Module Completed: Random Forest iteration: " + Iteration_no)
+print("Random forest classification ran for " + Iteration_no + " time(s).\n")
+
+# wait for all apps to complete
+#print("Job Status: {}".format([r.result() for r in results]))
