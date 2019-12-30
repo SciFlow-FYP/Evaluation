@@ -1,7 +1,3 @@
-from parsl import load, python_app
-from parsl.configs.local_threads import config
-load(config)
-
 import pandas as pd
 import numpy as np
 from sklearn import preprocessing
@@ -50,7 +46,6 @@ for i in colsToNormalize:
 
 #print(colsToNormalize)
 
-@python_app
 def normalize(startColIndex, endColIndex, dFrame, normalizeCols):
 	import pandas as pd
 	import numpy as np
@@ -89,40 +84,10 @@ def normalize(startColIndex, endColIndex, dFrame, normalizeCols):
 #drop the previous column and concat at the end.
 #parallelize the number of cols in the user script instruction - change for mode, normalize, encode
 
-maxThreads = 4
+
 numOfCols = df.shape[1]
 #print(numOfCols)
-dfNew = pd.DataFrame()
-results = []
-
-#one col per thread
-if numOfCols <= maxThreads:
-	for i in range (numOfCols):
-		df1 = normalize(i, i+1, df, colsToNormalize)
-		results.append(df1)
-		#print (df1)
-		#dfNew = pd.concat([dfNew, df1] , axis=1)
-
-
-elif numOfCols > maxThreads:
-	#print("test2")
-	eachThreadCols = numOfCols // maxThreads
-	for i in range (0,(maxThreads*eachThreadCols), eachThreadCols):
-		df1 = normalize(i,(i+eachThreadCols),df,colsToNormalize)
-		results.append(df1)
-	if (numOfCols % maxThreads != 0):
-		df2 = normalize((eachThreadCols * maxThreads),numOfCols,df,colsToNormalize)
-		results.append(df2)
-
-# wait for all apps to complete
-[r.result() for r in results]
-
-newlist = []
-for i in results:
-	newlist.append(i.result())
-
-for i in newlist:
-	dfNew = pd.concat([dfNew, i], axis=1)
+dfNew = normalize(0, numOfCols, df, colsToNormalize)
 
 #print(dfNew)
 dfNew.to_csv (outputDataset, index = False, header=True)

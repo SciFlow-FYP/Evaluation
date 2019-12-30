@@ -1,7 +1,3 @@
-from parsl import load, python_app
-from parsl.configs.local_threads import config
-load(config)
-
 import pandas as pd
 import numpy as np
 from datetime import datetime
@@ -44,7 +40,6 @@ outputDataset = outputLocation + currentModule + ".csv"
 columnsToAggregate = [["Actor1Geo_CountryCode", "Actor2Geo_CountryCode", "ActorGeo_CountryCode" ]]
 
 
-@python_app
 def combineColumns(startRowIndex, endRowIndex, dFrame, columnsToAggregate):
 	import pandas as pd
 	import numpy as np
@@ -125,41 +120,10 @@ def combineColumns(startRowIndex, endRowIndex, dFrame, columnsToAggregate):
 		return dfNew
 		#dfNew.to_csv ("/home/amanda/FYP/testcsv/RFout1.csv", index = False, header=True)
 
-maxThreads = 4
-results = []
+
 numOfRows = df.shape[0]
-results = []
-dfNew = pd.DataFrame()
-#df1 = combineColumns(0,100,df,columnsToAggregate)
+dfNew = combineColumns(0, numOfRows, df, columnsToAggregate)
 #print(df1.result())
-
-#not parallel --> relatively small number of rows here
-if numOfRows <= maxThreads:
-	df1 = combineColumns(0, numOfRows, df, columnsToAggregate)
-	results.append(df1)
-
-#parallel
-elif numOfRows > maxThreads:
-	#print("test2")
-	eachThreadRows = numOfRows // maxThreads
-	for i in range (0,(maxThreads*eachThreadRows), eachThreadRows):
-		df1 = combineColumns(i,(i+eachThreadRows),df, columnsToAggregate)
-		results.append(df1)
-	if (numOfRows % maxThreads != 0):
-		df2 = combineColumns((eachThreadRows * maxThreads), numOfRows, df, columnsToAggregate)
-		results.append(df2)
-
-# wait for all apps to complete
-[r.result() for r in results]
-
-newlist = []
-for i in results:
-	newlist.append(i.result())
-
-#concat all the dfs into one row wise
-for i in newlist:
-	dfNew = pd.concat([dfNew, i], axis=0)
-
 
 #dfNew = newlist[0]
 #print(dfNew)

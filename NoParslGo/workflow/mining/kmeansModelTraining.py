@@ -1,5 +1,3 @@
-from parsl import load, python_app
-
 import pandas as pd
 import numpy as np
 #from sklearn.cluster import KMeans
@@ -16,7 +14,6 @@ parentdir = os.path.dirname(currentdir)
 sys.path.insert(0,parentdir)
 
 import userScript
-import parslConfig
 #ignore warnings printed on terminal
 pd.options.mode.chained_assignment = None  # default='warn'
 
@@ -74,7 +71,6 @@ X = df.values.astype(np.float)
 
 X_train, X_test,y_train,y_test =  train_test_split(X,y,test_size=0.20,random_state=70)
 
-@python_app
 def kmeans(n):
 	import pandas as pd
 	from sklearn.cluster import KMeans
@@ -114,9 +110,9 @@ for i in numberOfClusters:
 #print ("Job Status: {}".format([r.done() for r in results]))
 
 # wait for all apps to complete
-return_array = [r.result() for r in results]
+#return_array = [r.result() for r in results]
 
-dfa=pd.DataFrame(return_array)
+dfa=pd.DataFrame(results)
 dfa.columns = ["Clusters", "Accuracy"]
 #print(dfa)
 

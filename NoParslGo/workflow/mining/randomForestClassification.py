@@ -1,7 +1,3 @@
-from parsl import load, python_app
-from parsl.configs.local_threads import config
-load(config)
-
 import pandas as pd
 import numpy as np
 import time
@@ -52,7 +48,7 @@ for i in range(len(orderOfModules)):
 
 outputLocation = outputLocation + "rf/"
 
-@python_app
+
 def rfClassifier(estimators, depth, split, features, dFrame):
 	dataset = dFrame
 	dataset.head()
@@ -102,9 +98,9 @@ for i in range(randomForestEstimatorRange[0], randomForestEstimatorRange[1]):
 
 
 # wait for all apps to complete
-return_array = [r.result() for r in results]
+#return_array = [r.result() for r in results]
 
-dfa=pd.DataFrame(return_array)
+dfa=pd.DataFrame(results)
 dfa.columns = ["Estimators","Depth","Split","MaxFeatures", "Accuracy"]
 #print(dfa)
 

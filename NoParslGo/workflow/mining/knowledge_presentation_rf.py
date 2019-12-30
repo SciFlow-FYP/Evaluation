@@ -79,7 +79,7 @@ X = sc.fit_transform(X)
 #X_test = sc.transform(X_test)
 
 
-classifier = RandomForestClassifier(n_estimators=obj['estimators'], max_depth = obj['depth'], min_samples_split=obj['split'], max_features=obj['maxfeatures'], random_state=0)
+classifier = RandomForestClassifier(n_estimators=obj['Estimators'], max_depth = obj['Depth'], min_samples_split=obj['Split'], max_features=obj['MaxFeatures'], random_state=0)
 classifier.fit(X, y)
 y_pred = classifier.predict([[-0.25011820853917, 5.4, 2,2]])
 print(y_pred)

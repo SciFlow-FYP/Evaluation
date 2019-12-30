@@ -1,7 +1,3 @@
-from parsl import load, python_app
-from parsl.configs.local_threads import config
-load(config)
-
 import pandas as pd
 import numpy as np
 import statistics
@@ -46,7 +42,6 @@ for i in range(len(orderOfModules)):
 
 outputDataset = outputLocation + currentModule + ".csv"
 
-@python_app
 def missingValuesMode(startColIndex, endColIndex, dFrame, colsMode):
 	df = pd.DataFrame()
 	df = dFrame.iloc[: , np.r_[startColIndex : endColIndex]]
@@ -83,41 +78,10 @@ def missingValuesMode(startColIndex, endColIndex, dFrame, colsMode):
 	ret  = df2
 	return ret
 
-maxThreads = 4
+
 numOfCols = df.shape[1]
 #print(numOfCols)
-dfNew = pd.DataFrame()
-results = []
-
-#one col per thread
-if numOfCols <= maxThreads:
-	for i in range (numOfCols):
-		#print("test1")
-		df1 = missingValuesMode(i, i+1, df, colsToMode)
-		results.append(df1)
-
-elif numOfCols > maxThreads:
-	#print("test2")
-	eachThreadCols = numOfCols // maxThreads
-	for i in range (0,(maxThreads*eachThreadCols), eachThreadCols):
-		df1 = missingValuesMode(i,(i+eachThreadCols),df,colsToMode)
-		results.append(df1)
-
-	if (numOfCols % maxThreads != 0):
-		#print("test3")
-		df2 = missingValuesMode((eachThreadCols * maxThreads),numOfCols,df,colsToMode)
-		results.append(df2)
-
-# wait for all apps to complete
-[r.result() for r in results]
-
-newlist = []
-for i in results:
-	newlist.append(i.result())
-
-for i in newlist:
-	dfNew = pd.concat([dfNew, i], axis=1)
-
+dfNew = missingValuesMode(0, numOfCols, df, colsToMode)
 #print(dfNew)
 dfNew.to_csv (outputDataset, index = False, header=True)
 print("Module Completed: Fill Missing Values with Mode")
