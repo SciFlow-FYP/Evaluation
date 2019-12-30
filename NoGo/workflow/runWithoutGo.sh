@@ -26,14 +26,21 @@ do
 	python3 mining/randomForestClassification.py 1 $VARIABLE
 done
 
+python3 mining/rfAccuracy.py 1
+#python3 mining/knowledge_presentation_rf.py 1
+
 python3 cleaning/dropUserDefinedColumns.py 3
 
 
-##for VARIABLE in 1 2 3 4 5 6 7 8 9 10
-##do
-##	python3 mining/kmeansModelTraining.py 3 10
-##done
+for VARIABLE in 1 2 3 4 5 6 7 8 9 10
+do
+	python3 mining/kmeansModelTraining.py 3 $VARIABLE
+done
 
+python3 mining/kmeansAccuracy.py 3
+
+python3 mining/knowledge_presentation.py 3
+python3 mining/svm.py 3
 
 
 

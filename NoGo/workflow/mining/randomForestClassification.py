@@ -88,10 +88,10 @@ def rfClassifier(estimators, depth, split, features, dFrame):
 results = []
 #print(rfClassifier(100, 3, 2, 'auto', df).result())
 
-print(randomForestEstimatorRange)
-print(randomForestDepthRange)
-print(randomForestSplitRange)
-print(randomForestFeaturesRange)
+#print(randomForestEstimatorRange)
+#print(randomForestDepthRange)
+#print(randomForestSplitRange)
+#print(randomForestFeaturesRange)
 
 for i in range(randomForestEstimatorRange[0], randomForestEstimatorRange[1]):
 	for j in range (randomForestDepthRange[0], randomForestDepthRange[1]):
@@ -109,5 +109,7 @@ dfa.columns = ["Estimators","Depth","Split","MaxFeatures", "Accuracy"]
 #print(dfa)
 
 dfa.to_csv (outputLocation + Iteration_no + '_rf.csv', index = None, header=True)
+print("Random forest classification ran for " + Iteration_no + " time(s).\n")
 
-print("Module Completed: Random Forest iteration: " + Iteration_no)
+# wait for all apps to complete
+#print("Job Status: {}".format([r.result() for r in results]))

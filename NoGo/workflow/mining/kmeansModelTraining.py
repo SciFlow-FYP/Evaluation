@@ -1,6 +1,5 @@
 from parsl import load, python_app
-from parsl.configs.local_threads import config
-load(config)
+
 import pandas as pd
 import numpy as np
 #from sklearn.cluster import KMeans
@@ -17,6 +16,7 @@ parentdir = os.path.dirname(currentdir)
 sys.path.insert(0,parentdir)
 
 import userScript
+import parslConfig
 #ignore warnings printed on terminal
 pd.options.mode.chained_assignment = None  # default='warn'
 
@@ -59,6 +59,8 @@ for i in range(len(orderOfModules)):
 			break
 outputLocation = outputLocation + "kmeans/"
 
+
+#print(df)
 #make this an input
 #df = pd.read_csv('/home/mpiuser/Documents/FYP/gdelt/missingValuesMode.csv')
 #input
@@ -115,10 +117,13 @@ for i in numberOfClusters:
 return_array = [r.result() for r in results]
 
 dfa=pd.DataFrame(return_array)
-dfa.columns = ["No_of_clusters", "Accuracy"]
+dfa.columns = ["Clusters", "Accuracy"]
 #print(dfa)
 
 dfa.to_csv (outputLocation + Iteration_no + '_kmeans.csv', index = None, header=True)
+print("Kmeans with clusters 2,3,4,5,6,7 ran for " + Iteration_no + " time(s).\n")
 
 # print each job status, they will now be finished
 #print ("Job Status: {}".format(return_array))
+
+#print('Kmeans model traning completed')
