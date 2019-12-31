@@ -1,15 +1,23 @@
-# Tests
-Testing the efficiency and flexibility of SciFlow as opposed to carrying out the same tasks;
-1) Without Channel Cordination - Go Control Thread
-   
-   Run the NoGo/workflow/runWithoutGo.sh file 
+# Evaluation
+Evaluating the efficiency and flexibility of SciFlow as opposed to carrying out similar tasks;
 
-2) Without implicit parallelism and Channel Cordination - Parsl and Go Control Thread
+1) **Without Channel Cordination - Go Control Thread**
    
-   Run the NoParslGo/workflow/run.sh file 
-
-3) Without Implicit Parallelism
+   Navigate to the NoGo/workflow/ folder and run the following commannd on the terminal.
+   ```console
+   time ./runWithoutGo.sh
+   ```
+3) **Without Implicit Parallelism**
    
-   Run the NoParslGo/test.go file with go run test.go
+   Navigate to the NoParslGo/ folder and run the following commannd on the terminal.
+   ```console
+   go run test.go 
+   ```
+2) **Without both Implicit Parallelism and Channel Cordination - Parsl and Go Control Thread**
+   
+   Navigate to the NoParslGo/workflow/ folder and run the following commannd on the terminal. 
+   ```console   
+   time ./run.sh
+   ```
 
 
