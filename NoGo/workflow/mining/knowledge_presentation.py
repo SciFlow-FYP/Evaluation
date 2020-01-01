@@ -55,7 +55,7 @@ obj = json.loads(data)
 
 
 #n = int(f.read())#int(sys.argv[1])
-n = int(obj['Clusters'])
+n = obj['No_of_clusters']
 
 
 kmeans = KMeans(n_clusters=n, random_state= 0).fit(X)
