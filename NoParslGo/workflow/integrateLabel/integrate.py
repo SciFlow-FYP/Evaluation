@@ -111,12 +111,13 @@ loc1 = userScript.outputLocation2+"monthlyDF/"
 # function to find dataframe for given month
 def findMonthlyDf(loc, name):
 	name=name+".csv"
+	df = pd.DataFrame()
 	for f in os.listdir(loc):
 		if f.endswith(".csv"):
 			if (f == name):
 				df = pd.read_csv(loc+f,  sep = ',', header=0)
 				df.fillna('O', inplace=True)
-				return df
+	return df
 
 # labelled as riot only if average tone is negative
 

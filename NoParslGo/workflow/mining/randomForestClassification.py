@@ -54,7 +54,7 @@ def rfClassifier(estimators, depth, split, features, dFrame):
 	dataset.head()
 
 	X = dataset.iloc[:, 1:5].values
-	y = dataset.iloc[:, 6].values
+	y = dataset.iloc[:, 9].values
 
 	from sklearn.model_selection import train_test_split
 	X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)

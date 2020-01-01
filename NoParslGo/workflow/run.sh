@@ -22,7 +22,7 @@ python3 cleaning/missingValuesMode.py 2
 python3 integrateLabel/addLabelColumn.py 2
 python3 integrateLabel/assignCountryCode.py 2
 python3 integrateLabel/splitDate.py 2
-python3 integrateLabel/integrate.py 1
+#python3 integrateLabel/integrate.py 1
 
 python3 transformation/normalize.py 1
 

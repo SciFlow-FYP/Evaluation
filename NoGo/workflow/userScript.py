@@ -68,6 +68,7 @@ When commiting - comment again
 datafilesLocation = '/home/amanda/FYP/data/'
 #datafilesLocation = '/home/clusteruser/gdeltDataFiles/'
 #datafilesLocation = '/home/mpiuser/Downloads/data/'
+#datafilesLocation = '/home/mpiuser/FYP/gdeltDataFiles/'
 
 
 

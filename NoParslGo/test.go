@@ -285,22 +285,23 @@ func main(){
 	fmt.Println(<- outChannelModule26)
 
 	outChannelModule27 := make(chan string, 1)
-	//pythonCall("workflow/integrateLabels/splitDate.py", outChannelModule5)
-	pythonCall("workflow/"+commandsArray[12], outChannelModule26, "2")
-	messagePassing(outChannelModule26, outChannelModule27)
-	fmt.Println(<- outChannelModule27)
+        //pythonCall("workflow/integrateLabels/splitDate.py", outChannelModule5)
+        pythonCall("workflow/"+commandsArray[12], outChannelModule26, "2")
+        messagePassing(outChannelModule26, outChannelModule27)
+        fmt.Println(<- outChannelModule27)
+/*
+        outChannelModule9 := make(chan string, 1)
+        //pythonCall("workflow/integrateLabels/integrate.py", outChannelModule5)
+        integratePythonCall("workflow/"+commandsArray[14], outChannelModule27, outChannelModule8, "1")
+        integrateMessagePassing(outChannelModule27, outChannelModule8, outChannelModule9)
+        fmt.Println(<- outChannelModule9)
+*/
+        outChannelModule10 := make(chan string, 1)
+        pythonCall("workflow/"+commandsArray[8], outChannelModule27, "1")
+        //pythonCall("workflow/transformation/normalize.py", outChannelModule6)
+        messagePassing(outChannelModule27, outChannelModule10)
+        fmt.Println(<- outChannelModule10)
 
-	outChannelModule9 := make(chan string, 1)
-	//pythonCall("workflow/integrateLabels/integrate.py", outChannelModule5)
-	integratePythonCall("workflow/"+commandsArray[14], outChannelModule27, outChannelModule8, "1")
-	integrateMessagePassing(outChannelModule27, outChannelModule8, outChannelModule9)
-	fmt.Println(<- outChannelModule9)
-
-	outChannelModule10 := make(chan string, 1)
-	pythonCall("workflow/"+commandsArray[8], outChannelModule9, "1")
-	//pythonCall("workflow/transformation/normalize.py", outChannelModule6)
-	messagePassing(outChannelModule9, outChannelModule10)
-	fmt.Println(<- outChannelModule10)
 
 	outChannelModule11 := make(chan string, 1)
 	//pythonCall("workflow/mining/randomForestClassification.py", outChannelModule5)
