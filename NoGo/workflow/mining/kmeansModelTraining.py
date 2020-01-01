@@ -115,7 +115,7 @@ for i in numberOfClusters:
 return_array = [r.result() for r in results]
 
 dfa=pd.DataFrame(return_array)
-dfa.columns = ["No_of_clusters", "Accuracy"]
+dfa.columns = ["Clusters", "Accuracy"]
 #print(dfa)
 
 dfa.to_csv (outputLocation + Iteration_no + '_kmeans.csv', index = None, header=True)
