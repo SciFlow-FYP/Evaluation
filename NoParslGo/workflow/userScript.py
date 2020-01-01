@@ -68,6 +68,7 @@ When commiting - comment again
 #datafilesLocation = '/home/amanda/FYP/data/'
 #datafilesLocation = '/home/clusteruser/gdeltDataFiles/'
 #datafilesLocation = '/home/mpiuser/Downloads/data/'
+datafilesLocation = '/home/mpiuser/FYP/gdeltDataFiles/'
 
 
 '''
@@ -106,16 +107,18 @@ outputLocation2 = "/home/mpiuser/Documents/FYP/acled/"
 outputLocation3 = "/home/mpiuser/Documents/FYP/gdelt/"
 '''
 
-'''
+
 #======================RAJINI=================================
 #input location
 inputDataset1 = "/home/mpiuser/FYP/testcsv/dropCountry.csv"
 inputDataset2 = "/home/mpiuser/FYP/testcsv/ACLED2019-Sri_Lanka.csv"
+inputDataset3 = "/home/mpiuser/FYP/gdelt/missingValuesMode.csv"
 
 #specify output locatiion
 outputLocation1 = "/home/mpiuser/FYP/gdelt/"
 outputLocation2 = "/home/mpiuser/FYP/acled/"
-'''
+outputLocation3 = "/home/mpiuser/FYP/gdelt/"
+
 
 '''#############################################################################'''
 
