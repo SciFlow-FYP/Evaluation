@@ -7,6 +7,13 @@ Evaluating the efficiency and flexibility of SciFlow as opposed to carrying out 
    ```console
    time ./runWithoutGo.sh
    ```
+
+   Needs to be tested on the follwing parsl configurations. 
+   *local_threads
+   *local_htex
+   *remote_htex
+
+
 3) **Without Implicit Parallelism**
    
    Navigate to the NoParslGo/ folder and run the following commannd on the terminal.

@@ -143,6 +143,7 @@ func readLines( progName string) [20]string{
 }
 
 func main(){
+	simplePythonCall1("logo.py")
 	for i := 1; i<=3; i++{
 		//check if input location is available
 		fmt.Println((i))
@@ -187,7 +188,7 @@ func main(){
 	fmt.Println(commandsArray)
 
 	//configurations
-	simplePythonCall1("workflow/parslConfig.py")
+	//simplePythonCall1("workflow/parslConfig.py")
 
 
 	//start module execution from here onwards
