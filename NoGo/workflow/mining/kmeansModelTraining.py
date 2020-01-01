@@ -64,25 +64,23 @@ outputLocation = outputLocation + "kmeans/"
 #make this an input
 #df = pd.read_csv('/home/mpiuser/Documents/FYP/gdelt/missingValuesMode.csv')
 #input
-y = df[clusterLabel].values
-#df_hist = df_hist['GoldsteinScale']
-#make this an input
-#df = df[['AvgTone', 'GoldsteinScale', 'NumMentions']]
-df = df[otherInputs]
 
-X = df.values.astype(np.float)
-
-X_train, X_test,y_train,y_test =  train_test_split(X,y,test_size=0.20,random_state=70)
 
 @python_app
-def kmeans(n):
+def kmeans(n,clusterLabel, otherInputs, df):
 	import pandas as pd
 	from sklearn.cluster import KMeans
 	import numpy as np
 
 	#from sklearn.cluster import KMeans
 	from sklearn.metrics import accuracy_score
+	from sklearn.model_selection import train_test_split
+	
+	y = df[clusterLabel].values
+	dfin = df[otherInputs]
+	X = dfin.values.astype(np.float)
 
+	X_train, X_test,y_train,y_test =  train_test_split(X,y,test_size=0.20,random_state=70)
 
 	k_means = KMeans(n_clusters=n)
 	kmeans = k_means.fit(X_train)
@@ -107,7 +105,7 @@ def kmeans(n):
 
 results = []
 for i in numberOfClusters:
-	app_future = kmeans(i)
+	app_future = kmeans(i, clusterLabel, otherInputs, df)
 	results.append(app_future)
 
 # print each job status, initially all are running
@@ -117,7 +115,7 @@ for i in numberOfClusters:
 return_array = [r.result() for r in results]
 
 dfa=pd.DataFrame(return_array)
-dfa.columns = ["Clusters", "Accuracy"]
+dfa.columns = ["No_of_clusters", "Accuracy"]
 #print(dfa)
 
 dfa.to_csv (outputLocation + Iteration_no + '_kmeans.csv', index = None, header=True)

@@ -65,13 +65,13 @@ When commiting - comment again
 '''
 
 #Gdelt FileSelection
-datafilesLocation = '/home/amanda/FYP/data/'
+#datafilesLocation = '/home/amanda/FYP/data/'
 #datafilesLocation = '/home/clusteruser/gdeltDataFiles/'
 #datafilesLocation = '/home/mpiuser/Downloads/data/'
-#datafilesLocation = '/home/mpiuser/FYP/gdeltDataFiles/'
+datafilesLocation = '/home/mpiuser/FYP/gdeltDataFiles/'
 
 
-
+'''
 #=========================AMANDA==============================
 #input location
 inputDataset1 = "/home/amanda/FYP/gdelt/countrySelection.csv"
@@ -83,7 +83,7 @@ outputLocation1 = "/home/amanda/FYP/gdelt/"
 outputLocation2 = "/home/amanda/FYP/acled/"
 outputLocation3 = "/home/amanda/FYP/gdelt/"
 
-
+'''
 '''
 #=========================CLUSTER==============================
 inputDataset1 = "/home/clusteruser/FYP/gdelt/countrySelection.csv"
@@ -107,16 +107,18 @@ outputLocation2 = "/home/mpiuser/Documents/FYP/acled/"
 outputLocation3 = "/home/mpiuser/Documents/FYP/gdelt/"
 '''
 
-'''
+
 #======================RAJINI=================================
 #input location
 inputDataset1 = "/home/mpiuser/FYP/testcsv/dropCountry.csv"
 inputDataset2 = "/home/mpiuser/FYP/testcsv/ACLED2019-Sri_Lanka.csv"
+inputDataset3 = "/home/mpiuser/FYP/gdelt/missingValuesMode.csv"
 
 #specify output locatiion
 outputLocation1 = "/home/mpiuser/FYP/gdelt/"
 outputLocation2 = "/home/mpiuser/FYP/acled/"
-'''
+outputLocation3 = "/home/mpiuser/FYP/gdelt/"
+
 
 '''#############################################################################'''
 
@@ -126,7 +128,7 @@ outputLocation2 = "/home/mpiuser/FYP/acled/"
 '''#######################		SELECTION	####################################'''
 #GDELT variables
 #======================
-startingDate = '2019.11.26'
+startingDate = '2019.08.01'
 endingDate = '2019.12.01'
 
 #select specific country records
