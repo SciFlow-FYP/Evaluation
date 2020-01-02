@@ -63,11 +63,11 @@ func simplePythonCall1(progName string){
 //=========================functions for rf==========================
 
 type Accuracy_class_rf struct {
-    Estimators int64 `json:"estimators"`
-    Depth int64 `json:"depth"`
-    Split int64 `json:"split"`
-    MaxFeatures int64 `json:"maxfeatures"`
-    Accuracy float64 `json:"accuracy"`
+    Estimators int64 `json:"Estimators"`
+    Depth int64 `json:"Depth"`
+    Split int64 `json:"Split"`
+    MaxFeatures int64 `json:"MaxFeatures"`
+    Accuracy float64 `json:"Accuracy"`
 }
 
 func FindMaxAccuracy_rf(Accuracy_set []Accuracy_class_rf) (max Accuracy_class_rf) {
@@ -236,8 +236,8 @@ func removeIt(ss Accuracy_class, ssSlice []Accuracy_class) []Accuracy_class {
 }
 
 type Accuracy_class struct {
-    Clusters int64 `json:"clusters"`
-    Accuracy float64 `json:"accuracy"`
+    Clusters int64 `json:"Clusters"`
+    Accuracy float64 `json:"Accuracy"`
 }
 
 func FindMaxAccuracy(Accuracy_set []Accuracy_class) (max Accuracy_class) {
@@ -468,7 +468,7 @@ func main(){
 	//simplePythonCall1("workflow/parslConfig.py")
 
 	start := time.Now()
-
+/*
 	//start module execution from here onwards
 	inChannelModule0 := make(chan string, 1)
 	outChannelModule0 := make(chan string, 1)
@@ -576,6 +576,7 @@ func main(){
 	integrateMessagePassing(outChannelModule27, outChannelModule8, outChannelModule9)
 	fmt.Println(<- outChannelModule9)
 */
+/*
 	outChannelModule10 := make(chan string, 1)
 	pythonCall("workflow/"+commandsArray[8], outChannelModule27, "1")
 	//pythonCall("workflow/transformation/normalize.py", outChannelModule6)
@@ -599,7 +600,7 @@ func main(){
 	//pythonCall("workflow/mining/knowledge_presentation_rf.py", outChannelModule6)
 	messagePassing(outChannelModule11, outChannelModule12)
 	fmt.Println(<- outChannelModule12)
-
+*/
 	//inChannelModule31 := make(chan string,1)
 	outChannelModule31 := make(chan string, 1)
 	//pythonCall("workflow/cleaning/dropUserDefinedColumns.py", outChannelModule5)
