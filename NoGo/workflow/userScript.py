@@ -66,9 +66,9 @@ When commiting - comment again
 
 #Gdelt FileSelection
 #datafilesLocation = '/home/amanda/FYP/data/'
-#datafilesLocation = '/home/clusteruser/gdeltDataFiles/'
+datafilesLocation = '/home/clusteruser/gdeltDataFiles/'
 #datafilesLocation = '/home/mpiuser/Downloads/data/'
-datafilesLocation = '/home/mpiuser/FYP/gdeltDataFiles/'
+#datafilesLocation = '/home/mpiuser/FYP/gdeltDataFiles/'
 
 
 '''
@@ -83,7 +83,7 @@ outputLocation1 = "/home/amanda/FYP/gdelt/"
 outputLocation2 = "/home/amanda/FYP/acled/"
 outputLocation3 = "/home/amanda/FYP/gdelt/"
 
-'''
+
 '''
 #=========================CLUSTER==============================
 inputDataset1 = "/home/clusteruser/FYP/gdelt/countrySelection.csv"
@@ -92,7 +92,7 @@ inputDataset3 = "/home/clusteruser/FYP/gdelt/missingValuesMode.csv"
 outputLocation1 = "/home/clusteruser/FYP/gdelt/"
 outputLocation2 = "/home/clusteruser/FYP/acled/"
 outputLocation3 = "/home/clusteruser/FYP/gdelt/"
-'''
+
 '''
 
 #=======================KALPANI===============================
@@ -107,7 +107,7 @@ outputLocation2 = "/home/mpiuser/Documents/FYP/acled/"
 outputLocation3 = "/home/mpiuser/Documents/FYP/gdelt/"
 '''
 
-
+'''
 #======================RAJINI=================================
 #input location
 inputDataset1 = "/home/mpiuser/FYP/testcsv/dropCountry.csv"
@@ -118,6 +118,7 @@ inputDataset3 = "/home/mpiuser/FYP/gdelt/missingValuesMode.csv"
 outputLocation1 = "/home/mpiuser/FYP/gdelt/"
 outputLocation2 = "/home/mpiuser/FYP/acled/"
 outputLocation3 = "/home/mpiuser/FYP/gdelt/"
+'''
 
 
 '''#############################################################################'''
