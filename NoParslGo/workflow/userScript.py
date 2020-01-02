@@ -105,8 +105,8 @@ inputDataset3 = "/home/mpiuser/Documents/FYP/gdelt/missingValuesMode.csv"
 outputLocation1 = "/home/mpiuser/Documents/FYP/gdelt/"
 outputLocation2 = "/home/mpiuser/Documents/FYP/acled/"
 outputLocation3 = "/home/mpiuser/Documents/FYP/gdelt/"
-'''
 
+'''
 
 #======================RAJINI=================================
 #input location
