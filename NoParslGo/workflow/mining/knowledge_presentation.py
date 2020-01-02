@@ -13,7 +13,6 @@ parentdir = os.path.dirname(currentdir)
 sys.path.insert(0,parentdir)
 
 import userScript
-import json
 
 
 currentModule = "knowledge_presentation"
@@ -47,15 +46,8 @@ outputDataset = outputLocation + currentModule + ".csv"
 dfin = DataFrame(df, columns = ['AvgTone', 'GoldsteinScale', 'NumMentions'])
 X = dfin.values
 
-with open(kmeansAccuracy, "r") as myfile:
-	data=myfile.read()
-
-# parse file
-obj = json.loads(data)
-
-
-#n = int(f.read())#int(sys.argv[1])
-n = obj['No_of_clusters']
+f= open(kmeansAccuracy, "r")
+n = int(f.read())#int(sys.argv[1])
 
 
 kmeans = KMeans(n_clusters=n, random_state= 0).fit(X)
@@ -72,4 +64,3 @@ centroids = kmeans.cluster_centers_
 
 dfin.to_csv (outputDataset, index = None, header=True)
 print("Module Completed: append label module after kmeans completed")
-

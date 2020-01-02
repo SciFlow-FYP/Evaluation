@@ -18,15 +18,18 @@ workflowNumber = sys.argv[1]
 
 if workflowNumber == "1":
 	outputLocation = userScript.outputLocation1
+	kmeansAccuracy = userScript.kmeansAccuracy1
 	
 elif workflowNumber == "2":
 	outputLocation = userScript.outputLocation2
+	kmeansAccuracy = userScript.kmeansAccuracy2
 
 elif workflowNumber == "3":
 	outputLocation = userScript.outputLocation3
+	kmeansAccuracy = userScript.kmeansAccuracy3
 
 inputLocation = outputLocation + "kmeans/"
-outputLocation = outputLocation + "kmeans.json"
+outputLocation = outputLocation + kmeansAccuracy
 
 from os import listdir
 from os.path import isfile, join

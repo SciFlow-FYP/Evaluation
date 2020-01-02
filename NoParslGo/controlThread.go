@@ -468,7 +468,7 @@ func main(){
 	//simplePythonCall1("workflow/parslConfig.py")
 
 	start := time.Now()
-/*
+
 	//start module execution from here onwards
 	inChannelModule0 := make(chan string, 1)
 	outChannelModule0 := make(chan string, 1)
@@ -576,7 +576,7 @@ func main(){
 	integrateMessagePassing(outChannelModule27, outChannelModule8, outChannelModule9)
 	fmt.Println(<- outChannelModule9)
 */
-/*
+
 	outChannelModule10 := make(chan string, 1)
 	pythonCall("workflow/"+commandsArray[8], outChannelModule27, "1")
 	//pythonCall("workflow/transformation/normalize.py", outChannelModule6)
@@ -600,7 +600,7 @@ func main(){
 	//pythonCall("workflow/mining/knowledge_presentation_rf.py", outChannelModule6)
 	messagePassing(outChannelModule11, outChannelModule12)
 	fmt.Println(<- outChannelModule12)
-*/
+
 	//inChannelModule31 := make(chan string,1)
 	outChannelModule31 := make(chan string, 1)
 	//pythonCall("workflow/cleaning/dropUserDefinedColumns.py", outChannelModule5)
@@ -639,4 +639,3 @@ func main(){
 	fmt.Println("\nDuration: " + duration.String())
 
 }
-
