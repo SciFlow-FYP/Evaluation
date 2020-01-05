@@ -127,10 +127,15 @@ outputLocation3 = "/home/mpiuser/FYP/gdelt/"
 
 '''#######################		SELECTION	####################################'''
 #GDELT variables
+
 #======================
 startingDate = '2019.08.01'
 endingDate = '2019.12.01'
 
+'''
+startingDate = '2019.11.26'
+endingDate = '2019.12.01'
+'''
 #select specific country records
 Actor1CountryCode = 'CE'
 Actor2CountryCode = 'CE'
@@ -218,7 +223,8 @@ rfPredictFor1 = [[-0.25011820853917, 5.4, 2,2]]
 numberOfClusters3 = [2,3,4,5,6,7]
 clusterLabel3 = 'QuadClass'
 otherInputs3 = ['AvgTone', 'GoldsteinScale', 'NumMentions']
-kmeansAccuracy3 = "kmeans.json"
+#kmeansAccuracy3 = "kmeans.json" ##USE THIS WHEN RUNNING run.sh
+kmeansAccuracy3 = "kmeans.txt"
 
 #svm
 label3 = 'clusterNo'
