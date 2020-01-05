@@ -47,6 +47,11 @@ outputDataset = outputLocation + currentModule + ".csv"
 
 @python_app
 def missingValuesMode(startColIndex, endColIndex, dFrame, colsMode):
+	import pandas as pd
+	import numpy as np
+	import statistics
+	from statistics import mode, StatisticsError
+
 	df = pd.DataFrame()
 	df = dFrame.iloc[: , np.r_[startColIndex : endColIndex]]
 	numOfRows = df.shape[0]

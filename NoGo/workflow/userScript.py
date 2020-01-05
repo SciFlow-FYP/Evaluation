@@ -106,8 +106,8 @@ outputLocation1 = "/home/mpiuser/Documents/FYP/gdelt/"
 outputLocation2 = "/home/mpiuser/Documents/FYP/acled/"
 outputLocation3 = "/home/mpiuser/Documents/FYP/gdelt/"
 '''
-'''
 
+'''
 #======================RAJINI=================================
 #input location
 inputDataset1 = "/home/mpiuser/FYP/testcsv/dropCountry.csv"

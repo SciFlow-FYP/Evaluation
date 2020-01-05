@@ -43,6 +43,8 @@ outputDataset = outputLocation + currentModule + ".csv"
 
 @python_app
 def dropRowsCriteria(startRowIndex, endRowIndex, dFrame, maxPercentageOfMissingValues):
+	import pandas as pd
+	import numpy as np
 
 	df = pd.DataFrame()
 	df = dFrame.iloc[np.r_[startRowIndex : endRowIndex] , : ]
