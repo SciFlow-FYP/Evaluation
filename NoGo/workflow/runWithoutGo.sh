@@ -1,6 +1,6 @@
 #!/bin/bash
 
- 
+python3 parslConfig.py 
 python3 gdeltFileSelection/dataFilesIntegration.py 1 
 python3 gdeltFileSelection/countrySelection.py 1 
 python3 selection/selectUserDefinedColumns.py 1

@@ -82,9 +82,9 @@ inputDataset3 = "/home/amanda/FYP/gdelt/missingValuesMode.csv"
 outputLocation1 = "/home/amanda/FYP/gdelt/"
 outputLocation2 = "/home/amanda/FYP/acled/"
 outputLocation3 = "/home/amanda/FYP/gdelt/"
-
-
 '''
+
+
 #=========================CLUSTER==============================
 inputDataset1 = "/home/clusteruser/FYP/gdelt/countrySelection.csv"
 inputDataset2 = "/home/clusteruser/gdeltDataFiles/ACLED2019-Sri_Lanka.csv"
@@ -106,8 +106,8 @@ outputLocation1 = "/home/mpiuser/Documents/FYP/gdelt/"
 outputLocation2 = "/home/mpiuser/Documents/FYP/acled/"
 outputLocation3 = "/home/mpiuser/Documents/FYP/gdelt/"
 '''
-
 '''
+
 #======================RAJINI=================================
 #input location
 inputDataset1 = "/home/mpiuser/FYP/testcsv/dropCountry.csv"
